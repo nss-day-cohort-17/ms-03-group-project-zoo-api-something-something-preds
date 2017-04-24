@@ -1,0 +1,36 @@
+{
+  "name": "ms-03-group-project-zoo-api-something-something-preds",
+  "version": "1.0.0",
+  "description": "Creating an API for an existing Angular app",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "bookshelf": "^0.10.3",
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "cookie-parser": "^1.4.3",
+    "debug": "^2.6.4",
+    "express": "^4.15.2",
+    "knex": "^0.12.9",
+    "mocha": "^3.3.0",
+    "morgan": "^1.8.1",
+    "pg": "^6.1.5",
+    "serve-favicon": "^2.4.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "db:reset": "knex migrate:rollback && knex migrate:latest && knex seed:run",
+    "start": "nodemon app.js",
+    "test": "nodemon --exec \"mocha --recursive\" -R nyan"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nss-day-cohort-17/ms-03-group-project-zoo-api-something-something-preds.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nss-day-cohort-17/ms-03-group-project-zoo-api-something-something-preds/issues"
+  },
+  "homepage": "https://github.com/nss-day-cohort-17/ms-03-group-project-zoo-api-something-something-preds#readme"
+}
