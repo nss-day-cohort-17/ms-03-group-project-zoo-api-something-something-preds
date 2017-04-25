@@ -15,7 +15,7 @@ module.exports.getAnimals = (req, res, next) => {
 module.exports.addAnimal = ({body}, res, next) => {
   Animal.forge(body)
   .save()
-  .then( () => res.status(201).json({"msg": "Nice POST, brah"}))
+  .then( () => res.status(201).json({"msg": "Post Success"}))
   .catch( (error) => {
     next(err);
   });
@@ -30,8 +30,16 @@ module.exports.deleteAnimal= ({params: {id}}, res, next) => {
     next(err);
   });
 };
+module.exports.editAnimal = ({body, params:{id}}, res, next) => {
+  body.id = id
+  Animal.forge(body)
+  .save()
+  .then( () => res.status(201).json({"msg": "Edit made to animal"}))
+  .catch( (error) => {
+    next(err);
+  });
+};
 module.exports.getZoonimal = ({query: {animalId}}, res, next) => {
-  console.log("Getting animalId", animalId)
   Animal.forge({id: animalId})
   .fetch({withRelated: ['zookeepers'], require: true})
   .then( (anizoo) => {
