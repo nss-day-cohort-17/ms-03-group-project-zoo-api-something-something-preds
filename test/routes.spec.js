@@ -20,14 +20,14 @@ describe('Zooz routes', () => {
 
     describe('Get all the animals', () => {
         it('Should get all the animals', () => {
-            return cahi.request(server)
+            return chai.request(server)
             .get('/api/v1/animals')
             .then( (res) => {
                 res.should.have.status(200)
                 res.should.be.json
                 res.body.should.be.a('array')
-                res.body.should.have.property('name')
-                res.body.name.should.equal('Hawky')
+                res.body[0].should.have.property('name')
+                res.body[0].name.should.equal('Hawky')
             })
         })
     })
