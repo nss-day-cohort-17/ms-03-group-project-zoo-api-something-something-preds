@@ -28,7 +28,7 @@ app.use(function(req, res, next) {
 
 if(app.get('env') === 'development' || app.get('env') === 'test') {
     app.use( (err, req, res, next) => {
-        console.log("error breh!", err)
+        console.log("error", err)
         res.status(err.status || 500)
         res.json({
             message: err.message,

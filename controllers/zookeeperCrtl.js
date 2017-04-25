@@ -13,20 +13,29 @@ module.exports.getZookeepers = (req, res, next) => {
   });
 }
 module.exports.addZookeeper = ({body}, res, next) => {
-  Animal.forge(body)
+  Zookeeper.forge(body)
   .save()
-  .then( () => res.status(201).json({"msg": "Nice POST, brah"}))
+  .then( () => res.status(201).json({"msg": "Post Success"}))
   .catch( (error) => {
     next(err);
   });
 };
 module.exports.deleteZookeeper= ({params: {id}}, res, next) => {
-  Animal.forge({id})
+  Zookeeper.forge({id})
   .destroy()
   .then( (animal) => {
     res.status(202).json(animal);
   })
   .catch( (err) => {
+    next(err);
+  });
+};
+module.exports.editZookeeper = ({body, params: {id}}, res, next) => {
+  body.id = id
+  Zookeeper.forge(body)
+  .save()
+  .then( () => res.status(201).json({"msg": "Edit made to zookeeper"}))
+  .catch( (error) => {
     next(err);
   });
 };

@@ -11,7 +11,6 @@ const Animal = bookshelf.Model.extend({
 
 },{
   getAll: function() {
-    console.log("Get all called from animals model");
     return this.forge()
     .fetchAll()
     .then( (rows) => {
