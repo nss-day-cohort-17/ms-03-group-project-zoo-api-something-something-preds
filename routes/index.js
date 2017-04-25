@@ -3,7 +3,8 @@
 const { Router } = require('express')
 const router = Router()
 
-const { getAnimals, getZookeepers, getZoonimal } = require('../controllers/zooCrtl')
+const { getZookeepers, addZookeeper, deleteZookeeper } = require('../controllers/zookeeperCrtl')
+const { getAnimals, addAnimal, getZoonimal, deleteAnimal } = require('../controllers/animalCrtl')
 
 router.get('/animals', getAnimals)
 router.get('/zookeepers', getZookeepers)
