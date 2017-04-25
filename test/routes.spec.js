@@ -18,16 +18,50 @@ describe('Zooz routes', () => {
         })
     })
 
-    describe('Get all the animals', () => {
-        it('Should get all the animals', () => {
-            return cahi.request(server)
+    describe('Get all le animals', () => {
+        it('Should get all le animals', () => {
+            return chai.request(server)
             .get('/api/v1/animals')
             .then( (res) => {
                 res.should.have.status(200)
                 res.should.be.json
                 res.body.should.be.a('array')
-                res.body.should.have.property('name')
-                res.body.name.should.equal('Hawky')
+                res.body[0].should.have.property('name')
+                res.body[0].should.have.property('species')
+                res.body[0].should.have.property('age')
+                res.body[0].name.should.equal('Hawky')
+                res.body[0].species.should.equal('bird')
+                res.body[0].age.should.equal(8)
+            })
+        })
+    })
+
+    describe('Get all le zookeepers', () => {
+        it('Should get all le zookeepers', () => {
+            return chai.request(server)
+            .get('/api/v1/zookeepers')
+            .then( (res) => {
+                res.should.have.status(200)
+                res.should.be.json
+                res.body.should.be.a('array')
+                res.body[0].should.have.property('name')
+                res.body[0].name.should.equal('Henry')
+            })
+        })
+    })
+
+    describe('Get da zoo!', () => {
+        it('Should get da zoo', () => {
+            return chai.request(server)
+            .get('api/v1/zoo')
+            .then( (res) => {
+                res.should.have.status(200)
+                res.should.be.json
+                res.body.should.be.a('array')
+                res.body[0].should.have.property('animal_id')
+                res.body[0].should.have.property('zookeeper_id')
+                res.body[0].animal_id.should.equal(0)
+                res.body[0].zookeeper_id.should.equal(0)
             })
         })
     })

@@ -18,7 +18,7 @@ exports.seed = function(knex, Promise) {
         }),
         knex('animals').insert({
           name: 'Joe',
-          species: 'Sheppard',
+          species: 'Sheep-hard',
           age: 12
         }),
         knex('animals').insert({
