@@ -1,13 +1,35 @@
-
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
-  return knex('table_name').del()
+  return knex('animals').del()
     .then(function () {
       // Inserts seed entries
-      return knex('table_name').insert([
-        {id: 1, colName: 'rowValue1'},
-        {id: 2, colName: 'rowValue2'},
-        {id: 3, colName: 'rowValue3'}
-      ]);
-    });
-};
+      return Promise.all([
+        // Inserts seed entries b-plate had id, tut doesn't??
+        knex('animals').insert({
+          name: 'Hawky',
+          species: 'bird',
+          age: 8
+        }),
+        knex('animals').insert({
+          name: 'Jag',
+          species: 'fish',
+          age: 1
+        }),
+        knex('animals').insert({
+          name: 'Joe',
+          species: 'Sheppard',
+          age: 12
+        }),
+        knex('animals').insert({
+          name: 'Yambo',
+          species: 'tool-bag',
+          age: 16
+        }),
+        knex('animals').insert({
+          name: 'BooBoo',
+          species: 'bear',
+          age: 43
+        })
+      ])
+    })
+}
