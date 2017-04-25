@@ -3,7 +3,6 @@
 const { bookshelf } = require('../db/database');
 const Animal = require('../models/animals')
 const Zookeeper = require('../models/zookeepers')
-const Zoo = require('../models/zoo')
 
 module.exports.getAnimals = (req, res, next) => {
   Animal.getAll()
