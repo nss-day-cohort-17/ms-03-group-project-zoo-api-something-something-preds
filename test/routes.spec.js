@@ -49,4 +49,20 @@ describe('Zooz routes', () => {
             })
         })
     })
+
+    describe('Get da zoo!', () => {
+        it('Should get da zoo', () => {
+            return chai.request(server)
+            .get('api/v1/zoo')
+            .then( (res) => {
+                res.should.have.status(200)
+                res.should.be.json
+                res.body.should.be.a('array')
+                res.body[0].should.have.property('animal_id')
+                res.body[0].should.have.property('zookeeper_id')
+                res.body[0].animal_id.should.equal(0)
+                res.body[0].zookeeper_id.should.equal(0)
+            })
+        })
+    })
 })

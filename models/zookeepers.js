@@ -5,9 +5,9 @@ const { bookshelf } = require('../db/database');
 require('./animals')
 require('./zoo')
 
-const Zookeepers = bookshelf.Model.extend({
+const Zookeeper = bookshelf.Model.extend({
   tableName: 'zookeepers',
-  animals: function() {return this.belongsToMany('Animals').through('Zoo')}
+  animals: function() {return this.belongsToMany('Animal').through('Zoonimal')}
 
 },{
   getAll: function() {
@@ -35,4 +35,4 @@ const Zookeepers = bookshelf.Model.extend({
   }
 })
 
-module.exports = bookshelf.model('Zookeepers', Zookeepers);
+module.exports = bookshelf.model('Zookeeper', Zookeeper);
