@@ -1,4 +1,3 @@
-
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
   return knex('animals').del()
@@ -18,7 +17,7 @@ exports.seed = function(knex, Promise) {
         }),
         knex('animals').insert({
           name: 'Joe',
-          species: 'Sheep-hard',
+          species: 'Sheppard',
           age: 12
         }),
         knex('animals').insert({
