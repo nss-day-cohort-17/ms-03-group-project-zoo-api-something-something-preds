@@ -16,8 +16,8 @@ module.exports.getAnimals = (req, res, next) => {
 
 module.exports.getZookeepers = (req, res, next) => {
   Zookeeper.getAll()
-  .then( (animals) => {
-    res.status(200).json(animals);
+  .then( (zookeepers) => {
+    res.status(200).json(zookeepers);
   })
   .catch( (error) => {
     next(error);

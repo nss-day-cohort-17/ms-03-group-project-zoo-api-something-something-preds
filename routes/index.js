@@ -3,8 +3,9 @@
 const { Router } = require('express')
 const router = Router()
 
-const { getAnimals } = require('../controllers/zooCrtl')
+const { getAnimals, getZookeepers } = require('../controllers/zooCrtl')
 
 router.get('/animals', getAnimals)
+router.get('/zookeepers', getZookeepers)
 
 module.exports = router

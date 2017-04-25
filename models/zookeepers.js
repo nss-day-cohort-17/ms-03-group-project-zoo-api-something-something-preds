@@ -14,6 +14,7 @@ const Zookeepers = bookshelf.Model.extend({
     return this.forge()
     .fetchAll()
     .then( (rows) => {
+      // console.log("What rows??", rows)
       return rows
     })
     .catch( (error) => {
