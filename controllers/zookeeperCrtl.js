@@ -18,8 +18,8 @@ module.exports.addZookeeper = ({body}, res, next) => {
   .then( () => res.status(201).json({"msg": "Post Success"}))
   .catch( (error) => {
     next(err);
-  });
-};
+  })
+}
 module.exports.deleteZookeeper= ({params: {id}}, res, next) => {
   Zookeeper.forge({id})
   .destroy()

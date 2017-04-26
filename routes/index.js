@@ -3,8 +3,8 @@
 const { Router } = require('express')
 const router = Router()
 
-const { getZookeepers, addZookeeper, deleteZookeeper, editZookeeper } = require('../controllers/zookeeperCrtl')
-const { getAnimals, addAnimal, getZoonimal, deleteAnimal, editAnimal } = require('../controllers/animalCrtl')
+const { getZookeepers, addZookeeper, deleteZookeeper, editZookeeper, getZookeepersAnimals } = require('../controllers/zookeeperCrtl')
+const { getAnimals, addAnimal, getAnimalsZookeepers, deleteAnimal, editAnimal } = require('../controllers/animalCrtl')
 
 //animal routes
 router.get('/animals', getAnimals)
@@ -19,6 +19,9 @@ router.delete('/zookeeper/delete/:id', deleteZookeeper)
 router.patch('/zookeeper/edit/:id', editZookeeper)
 
 //animal relation routes
-router.get('/zoo', getZoonimal)
+router.get('/animal/zookeepers', getAnimalsZookeepers)
+
+//Zookeeper relation routes
+router.get('/zookeeper/animals', getZookeepersAnimals)
 
 module.exports = router

@@ -39,11 +39,11 @@ module.exports.editAnimal = ({body, params:{id}}, res, next) => {
     next(err);
   });
 };
-module.exports.getZoonimal = ({query: {animalId}}, res, next) => {
+module.exports.getAnimalsZookeepers = ({query: {animalId}}, res, next) => {
   Animal.forge({id: animalId})
   .fetch({withRelated: ['zookeepers'], require: true})
-  .then( (anizoo) => {
-    res.status(200).json(anizoo)
+  .then( (animalInfo) => {
+    res.status(200).json(animalInfo)
   })
   .catch( (err) => {
      next (err)
