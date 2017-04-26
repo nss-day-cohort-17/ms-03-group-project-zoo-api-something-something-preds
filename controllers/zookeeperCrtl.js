@@ -28,8 +28,8 @@ module.exports.deleteZookeeper= ({params: {id}}, res, next) => {
   })
   .catch( (err) => {
     next(err);
-  });
-};
+  })
+}
 module.exports.editZookeeper = ({body, params: {id}}, res, next) => {
   body.id = id
   Zookeeper.forge(body)
@@ -37,5 +37,15 @@ module.exports.editZookeeper = ({body, params: {id}}, res, next) => {
   .then( () => res.status(201).json({"msg": "Edit made to zookeeper"}))
   .catch( (error) => {
     next(err);
-  });
-};
+  })
+}
+module.exports.getZookeepersAnimals = ({query: {zookeeperId}}, res, next) => {
+  Zookeeper.forge({id: zookeeperId})
+  .fetch({withRelated: ['animals'], require: true})
+  .then( (zookeeperInfo) => {
+    res.status(200).json(zookeeperInfo)
+  })
+  .catch( (err) => {
+     next (err)
+  })
+}
