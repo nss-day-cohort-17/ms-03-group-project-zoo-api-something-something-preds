@@ -4,7 +4,10 @@ const { Router } = require('express')
 const router = Router()
 
 const { getZookeepers, addZookeeper, deleteZookeeper, editZookeeper, getZookeepersAnimals } = require('../controllers/zookeeperCrtl')
+
 const { getAnimals, addAnimal, getAnimalsZookeepers, deleteAnimal, editAnimal } = require('../controllers/animalCrtl')
+
+const {getZoo, addAnimalZookeeper, editAnimalZookeeper, deleteAnimalZookeeper} = require('../controllers/zooCrtl')
 
 //animal routes
 router.get('/animals', getAnimals)
@@ -23,5 +26,12 @@ router.get('/animal/zookeepers', getAnimalsZookeepers)
 
 //Zookeeper relation routes
 router.get('/zookeeper/animals', getZookeepersAnimals)
+
+//animal zookeeper relation
+router.get('/zoo', getZoo)
+router.post('/zoo/animal/newAnimal', addAnimalZookeeper)
+router.delete('/zoo/animalAndKeeper/delete',deleteAnimalZookeeper)
+router.patch('/zoo/animal/:id', editAnimalZookeeper)
+
 
 module.exports = router
