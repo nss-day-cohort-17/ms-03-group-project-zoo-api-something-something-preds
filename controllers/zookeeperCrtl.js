@@ -16,7 +16,7 @@ module.exports.addZookeeper = ({body}, res, next) => {
   Zookeeper.forge(body)
   .save()
   .then( () => res.status(201).json({"msg": "Post Success"}))
-  .catch( (error) => {
+  .catch( (err) => {
     next(err);
   })
 }
@@ -35,7 +35,7 @@ module.exports.editZookeeper = ({body, params: {id}}, res, next) => {
   Zookeeper.forge(body)
   .save()
   .then( () => res.status(201).json({"msg": "Edit made to zookeeper"}))
-  .catch( (error) => {
+  .catch( (err) => {
     next(err);
   })
 }

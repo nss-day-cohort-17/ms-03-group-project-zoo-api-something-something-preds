@@ -2,6 +2,7 @@
 
 const { bookshelf } = require('../db/database');
 const Animal = require('../models/animals')
+const Zoo = require('../models/zoo')
 
 module.exports.getAnimals = (req, res, next) => {
   Animal.getAll()
@@ -12,12 +13,24 @@ module.exports.getAnimals = (req, res, next) => {
     next(error);
   });
 }
-module.exports.addAnimal = ({body}, res, next) => {
-  Animal.forge(body)
+module.exports.addAnimal = ({body: {name, species, age, keepers}}, res, next) => {
+  // console.log(name, species, age, keepers);
+  let animal = {}
+  animal.name = name
+  animal.species = species
+  animal.age = age
+  console.log(animal);
+  Animal.forge(animal)
   .save()
-  .then( () => res.status(201).json({"msg": "Post Success"}))
+  .then( (data) => {
+  if(keepers.length === 0 ) return   
+    for (var i = 0; i < keepers.length; i++) {
+      Zoo.forge({animal_id:data.id, zookeeper_id:keepers[i]}).save()
+    }
+  })
+  .then(()=>res.status(201).json({"msg":"Good for you"}))
   .catch( (error) => {
-    next(err);
+    next(error);
   });
 };
 module.exports.deleteAnimal= ({params: {id}}, res, next) => {

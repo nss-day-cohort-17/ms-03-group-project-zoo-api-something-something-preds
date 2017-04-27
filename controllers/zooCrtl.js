@@ -3,6 +3,7 @@
 const { bookshelf } = require('../db/database');
 const Zoo = require('../models/zoo')
 const Animal = require('../models/animals')
+const Zookeeper = require('../models/zookeepers')
 
 module.exports.getZoo = (req, res, next) => {
   Zoo.getAll()
@@ -41,6 +42,19 @@ module.exports.deleteAnimalZookeeper = ({query: {id}}, res, next) => {
   })
   .then(()=> {
     return res.status(201).json({"msg": `deleted from animal`})
+  })
+  .catch( (error) => {
+    next(error);
+  })
+}
+module.exports.deleteKeeeperAnimal = ({query: {id}}, res, next) => {
+  Zoo.forge().where({animal_id: id})
+  .destroy()
+  .then( () => {
+    return Zookeeper.forge({id: id}).destroy()
+  })
+  .then(()=> {
+    return res.status(201).json({"msg": `deleted from zookeepers`})
   })
   .catch( (error) => {
     next(error);

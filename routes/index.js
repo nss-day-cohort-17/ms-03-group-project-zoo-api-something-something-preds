@@ -7,7 +7,7 @@ const { getZookeepers, addZookeeper, deleteZookeeper, editZookeeper, getZookeepe
 
 const { getAnimals, addAnimal, getAnimalsZookeepers, deleteAnimal, editAnimal } = require('../controllers/animalCrtl')
 
-const {getZoo, addAnimalZookeeper, editAnimalZookeeper, deleteAnimalZookeeper} = require('../controllers/zooCrtl')
+const {getZoo, addAnimalZookeeper, editAnimalZookeeper, deleteAnimalZookeeper, deleteKeeeperAnimal} = require('../controllers/zooCrtl')
 
 //animal routes
 router.get('/animals', getAnimals)
@@ -31,6 +31,7 @@ router.get('/zookeeper/animals', getZookeepersAnimals)
 router.get('/zoo', getZoo)
 router.post('/zoo/animal/newAnimal', addAnimalZookeeper)
 router.delete('/zoo/animalAndKeeper/delete',deleteAnimalZookeeper)
+router.delete('/zoo/keeperAndAnimal/delete', deleteKeeeperAnimal)
 router.patch('/zoo/animal/:id', editAnimalZookeeper)
 
 
