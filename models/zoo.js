@@ -9,6 +9,17 @@ const Zoonimal = bookshelf.Model.extend({
   zookeepers: function() {return this.belongsTo('Zookeeper')},
   animals: function (){return this.belongsTo('Animal')}
 
+},{
+  getAll: function() {
+    return this.forge()
+    .fetchAll()
+    .then( (rows) => {
+      return rows
+    })
+    .catch( (error) => {
+      return error
+    });
+  }
 })
 
 module.exports = bookshelf.model('Zoonimal', Zoonimal)
